@@ -52,11 +52,11 @@ describe OysterCard do
       expect { subject.touch_out(exit_station) }.to change { subject.balance }.by(-OysterCard::MINIMUM_CHARGE)
     end
 
-    it "stores the entry station" do
-      subject.touch_in(entry_station)
-      puts subject.entry_station
-      expect(subject.entry_station).to eq entry_station
-    end
+    #it "stores the entry station" do
+    #  subject.touch_in(entry_station)
+    #  puts subject.entry_station
+    #   expect(subject.entry_station).to eq entry_station
+    # end
 
     context "oystercard is below minimum balance" do
       it "will not touch in" do
@@ -74,10 +74,10 @@ describe OysterCard do
       expect(subject.in_journey).to be false
     end
 
-    it "stores exit station" do
-      subject.touch_in(entry_station)
-      subject.touch_out(exit_station)
-      expect(subject.exit_station).to eq(exit_station)
-    end
+    # it "stores exit station" do
+    #   subject.touch_in(entry_station)
+    #   subject.touch_out(exit_station)
+    #   expect(subject.exit_station).to eq(exit_station)
+    # end
   end
 end
