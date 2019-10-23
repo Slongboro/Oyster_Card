@@ -9,7 +9,7 @@ class OysterCard
     @in_journey = false
     @entry_station
     @exit_station
-    @journeys = []
+    @journeys = {}
   end
 
   def top_up(amount)
@@ -19,8 +19,10 @@ class OysterCard
 
   def touch_in(station)
     fail "Insufficient balance to touch in" if balance < MINIMUM_CHARGE
+    @journeys.clear
     @in_journey = true
     @entry_station = station
+    @journeys.merge!(entry_station: station)
   end
 
   def touch_out(station)
@@ -28,6 +30,7 @@ class OysterCard
     @in_journey = false
     @entry_station = nil
     @exit_station = station
+    @journeys.merge!(exit_station: station)
   end
 
   def in_journey?
